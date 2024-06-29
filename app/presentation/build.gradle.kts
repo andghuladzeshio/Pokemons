@@ -54,6 +54,9 @@ android {
 
 dependencies {
     implementation(project(":app:domain"))
+    // !!! Presentation should not have dependency on data layer
+    // Added to fix hilt crush
+    implementation(project(":app:data"))
     implementation(project(":shared"))
 
     implementation(libs.androidx.core.ktx)
@@ -68,6 +71,7 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.navigation.compose)
     implementation(libs.hilt.android)
+    implementation(libs.hilt.compose)
     ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)

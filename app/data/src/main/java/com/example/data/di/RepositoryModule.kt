@@ -6,14 +6,15 @@ import com.example.domain.repository.PokemonRepository
 import com.example.data.repository.PokemonRepositoryImpl
 import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.scopes.ViewModelScoped
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
-
     @Singleton
     @Binds
     abstract fun bindPokemonMapper(mapperImpl: PokemonMapperImpl): PokemonMapper

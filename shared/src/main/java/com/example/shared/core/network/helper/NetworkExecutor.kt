@@ -10,7 +10,7 @@ import kotlin.coroutines.cancellation.CancellationException
 import com.example.shared.core.network.model.Result
 
 class NetworkExecutor<T> internal constructor(parentJob: Job) {
-    private val executorScope = CoroutineScope(Dispatchers.IO + SupervisorJob(parentJob))
+    private val executorScope = CoroutineScope(Dispatchers.Main + SupervisorJob(parentJob))
 
     private lateinit var executeBlock: (suspend CoroutineScope.() -> T)
 
@@ -24,12 +24,13 @@ class NetworkExecutor<T> internal constructor(parentJob: Job) {
         onResult?.invoke(Result.Loading)
 
         try {
-            val result = executeBlock.invoke(executorScope)
-
-            withContext(Dispatchers.Main) {
-                onSuccessBlock?.invoke(result)
-                onResult?.invoke(Result.Success(result))
+            var result: T
+            withContext(Dispatchers.IO) {
+                result = executeBlock.invoke(executorScope)
             }
+
+            onSuccessBlock?.invoke(result)
+            onResult?.invoke(Result.Success(result))
         } catch (e: Exception) {
             if (e is CancellationException) throw e
 
