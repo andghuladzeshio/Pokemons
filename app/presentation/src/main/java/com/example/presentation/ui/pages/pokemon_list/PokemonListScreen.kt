@@ -65,7 +65,8 @@ fun PokemonListScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White), contentPadding = PaddingValues(24.dp)
+            .background(Color.White),
+        contentPadding = PaddingValues(24.dp)
     ) {
         items(pokemons) { pokemon ->
             PokemonView(pokemon, navController) {
@@ -82,12 +83,10 @@ fun PokemonListScreen(
         } else if (viewModel.nextPageAvailable) {
             item {
                 LoadingView()
-            }
-        }
 
-        if (viewModel.nextPageAvailable) item {
-            LaunchedEffect(Unit) {
-                viewModel.getPokemons()
+                LaunchedEffect(Unit) {
+                    viewModel.getPokemons()
+                }
             }
         }
     }
@@ -107,17 +106,15 @@ fun PokemonListScreen(
 private fun PokemonView(
     pokemon: Pokemon, navController: NavHostController, onImageClick: () -> Unit
 ) {
-    Row(
-        modifier = Modifier
-            .shadow(2.dp, RoundedCornerShape(24.dp))
-            .fillMaxWidth()
-            .height(150.dp)
-            .roundedCorners(24.dp)
-            .background(Color.White)
-            .clickable {
-                onImageClick()
-            }
-    ) {
+    Row(modifier = Modifier
+        .shadow(2.dp, RoundedCornerShape(24.dp))
+        .fillMaxWidth()
+        .height(150.dp)
+        .roundedCorners(24.dp)
+        .background(Color.White)
+        .clickable {
+            onImageClick()
+        }) {
         ImageLoader(
             contentScale = ContentScale.FillHeight,
             modifier = Modifier
@@ -133,8 +130,7 @@ private fun PokemonView(
         Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .padding(24.dp),
-            horizontalAlignment = Alignment.End
+                .padding(24.dp), horizontalAlignment = Alignment.End
         ) {
             Text(
                 text = pokemon.name,
