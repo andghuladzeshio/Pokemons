@@ -15,18 +15,8 @@ object RetrofitClientModule {
 
     @Provides
     @Singleton
-    @ApiClient
     fun provideRetrofitClient(): Retrofit {
         return Retrofit.Builder().baseUrl(BuildConfig.API_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    @ImageClient
-    fun provideRetrofitImageClient(): Retrofit {
-        return Retrofit.Builder().baseUrl(BuildConfig.API_URL_IMAGE)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

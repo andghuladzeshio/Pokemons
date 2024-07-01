@@ -1,9 +1,6 @@
 package com.example.data.di
 
 import com.example.data.api.PokemonApi
-import com.example.data.api.PokemonImageApi
-import com.example.shared.core.network.di.ApiClient
-import com.example.shared.core.network.di.ImageClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,14 +14,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun providePokemonApi(@ApiClient retrofit: Retrofit): PokemonApi {
+    fun providePokemonApi(retrofit: Retrofit): PokemonApi {
         return retrofit.create(PokemonApi::class.java)
     }
-
-    @Provides
-    @Singleton
-    fun providePokemonImageApi(@ImageClient retrofit: Retrofit): PokemonImageApi {
-        return retrofit.create(PokemonImageApi::class.java)
-    }
-
 }
