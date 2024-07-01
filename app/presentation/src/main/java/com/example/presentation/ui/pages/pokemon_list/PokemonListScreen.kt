@@ -29,7 +29,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
@@ -40,9 +39,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
-import coil.compose.AsyncImagePainter
-import coil.compose.SubcomposeAsyncImage
-import coil.compose.SubcomposeAsyncImageContent
 import com.example.domain.model.Pokemon
 import com.example.presentation.R
 import com.example.presentation.ui.pages.pokemon_details.PokemonDetails
@@ -50,6 +46,7 @@ import com.example.shared.core.extensions.roundedCorners
 import com.example.shared.core.extensions.shimmerEffect
 import com.example.shared.core.ui.util.state.ScreenState
 import com.example.shared.core.ui.view.error.ErrorView
+import com.example.shared.core.ui.view.image.ImageLoader
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -198,27 +195,3 @@ fun ImageShimmer(height: Dp) {
             .shimmerEffect()
     )
 }
-
-@Composable
-fun ImageLoader(
-    modifier: Modifier = Modifier,
-    url: String,
-    contentScale: ContentScale,
-    onLoading: @Composable () -> Unit
-) {
-    SubcomposeAsyncImage(
-        contentScale = contentScale, modifier = modifier, model = url, contentDescription = null
-    ) {
-        val state = painter.state
-        if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
-            onLoading()
-        } else {
-            SubcomposeAsyncImageContent()
-        }
-    }
-}
-
-private val imageGradientBrush = Brush.verticalGradient(
-    colors = listOf(Color.Transparent, Color.Black)
-)
-

@@ -2,4 +2,6 @@
     <string name="app_name">Pokemons</string>
 
     <string name="pokemons_details">დეტალები</string>
+    <string name="pokemons_about_pokemon">%s-ის შესახებ:</string>
+    <string name="pokemons_about_pokemon_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel lorem sollicitudin erat pellentesque hendrerit. Pellentesque malesuada gravida elit ut luctus. Vivamus in pellentesque sapien. Integer sed massa risus. Sed faucibus tellus vitae volutpat dapibus. Mauris nec eros risus. Etiam purus urna, ullamcorper vitae laoreet sed, blandit elementum arcu. Mauris justo erat, sodales ut auctor vel, ultricies et eros. Sed sed ex justo. Nullam venenatis neque eget nulla porta convallis suscipit vel nisl. Sed sit amet lorem id nibh pharetra venenatis. Aliquam erat volutpat. Sed lectus odio, aliquam quis odio at, lacinia pellentesque enim. Sed nec lacus quis ex tristique pharetra. Suspendisse potenti. Proin quis felis eu tellus tempor scelerisque.</string>
 </resources>

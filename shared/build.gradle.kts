@@ -62,6 +62,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.retrofit)
     implementation(libs.gson)
+    implementation(libs.coil)
     implementation(libs.kotlinx.coroutines)
     implementation(libs.lifecycle.viewModel)
     implementation(libs.hilt.android)
