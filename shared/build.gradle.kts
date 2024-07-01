@@ -11,6 +11,11 @@ android {
 
     buildFeatures {
         buildConfig = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 
     defaultConfig {
@@ -23,11 +28,11 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "API_URL", "\"https://pokeapi.co/api/v2/\"")
-            buildConfigField("String", "API_URL_IMAGE", "\"https://pokeapi.co/api/v2/\"")
+            buildConfigField("String", "API_URL_IMAGE", "\"https://img.pokemondb.net/artwork/\"")
         }
         release {
             buildConfigField("String", "API_URL", "\"https://pokeapi.co/api/v2/\"")
-            buildConfigField("String", "API_URL_IMAGE", "\"https://pokeapi.co/api/v2/\"")
+            buildConfigField("String", "API_URL_IMAGE", "\"https://img.pokemondb.net/artwork/\"")
 
             isMinifyEnabled = false
             proguardFiles(

@@ -4,6 +4,7 @@ import com.example.data.model.PokemonEntity
 import com.example.data.model.PokemonsResponseEntity
 import com.example.domain.model.Pokemon
 import com.example.domain.model.PokemonsResponse
+import com.example.shared.BuildConfig
 import javax.inject.Inject
 
 class PokemonMapperImpl @Inject constructor() : PokemonMapper {
@@ -20,7 +21,11 @@ class PokemonMapperImpl @Inject constructor() : PokemonMapper {
     private fun mapToPokemon(pokemonEntity: PokemonEntity): Pokemon {
         return Pokemon(
             pokemonEntity.name,
-            pokemonEntity.url
+            BuildConfig.API_URL_IMAGE.plus(pokemonEntity.name).plus(IMAGE_EXTENSION)
         )
+    }
+
+    companion object {
+        private const val IMAGE_EXTENSION = ".jpg"
     }
 }

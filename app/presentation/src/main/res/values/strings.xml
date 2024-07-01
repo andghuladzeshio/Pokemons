@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">presentation</string>
+    <string name="app_name">Pokemons</string>
+
+    <string name="pokemons_details">დეტალები</string>
 </resources>

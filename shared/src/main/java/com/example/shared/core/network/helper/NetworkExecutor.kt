@@ -14,10 +14,10 @@ class NetworkExecutor<T> internal constructor(parentJob: Job) {
 
     private lateinit var executeBlock: (suspend CoroutineScope.() -> T)
 
-    private var onResult: ((Result<T>) -> Unit)? = null
-    private var loadingBlock: (() -> Unit)? = null
-    private var onSuccessBlock: ((T) -> Unit)? = null
-    private var onErrorBlock: ((Exception) -> Unit)? = null
+    private var onResult: (suspend (Result<T>) -> Unit)? = null
+    private var loadingBlock: (suspend () -> Unit)? = null
+    private var onSuccessBlock: (suspend (T) -> Unit)? = null
+    private var onErrorBlock: (suspend (Exception) -> Unit)? = null
 
     internal fun makeNetworkCall() = executorScope.launch {
         loadingBlock?.invoke()
@@ -43,19 +43,19 @@ class NetworkExecutor<T> internal constructor(parentJob: Job) {
         executeBlock = block
     }
 
-    fun loading(block: () -> Unit) {
+    fun loading(block: suspend () -> Unit) {
         loadingBlock = block
     }
 
-    fun success(block: (T) -> Unit) {
+    fun success(block: suspend (T) -> Unit) {
         onSuccessBlock = block
     }
 
-    fun error(block: (Exception) -> Unit) {
+    fun error(block: suspend (Exception) -> Unit) {
         onErrorBlock = block
     }
 
-    fun onResult(block: (Result<T>) -> Unit) {
+    fun onResult(block: suspend (Result<T>) -> Unit) {
         onResult = block
     }
 }
