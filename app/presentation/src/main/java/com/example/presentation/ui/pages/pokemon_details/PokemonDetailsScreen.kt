@@ -47,6 +47,7 @@ fun PokemonDetailsScreen(pokemonDetails: PokemonDetails) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
+                    .height(400.dp)
                     .shimmerEffect()
             )
         }

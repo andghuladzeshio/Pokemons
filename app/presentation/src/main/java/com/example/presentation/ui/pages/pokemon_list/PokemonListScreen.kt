@@ -116,9 +116,10 @@ private fun PokemonView(
             onImageClick()
         }) {
         ImageLoader(
-            contentScale = ContentScale.FillHeight,
+            contentScale = ContentScale.Fit,
             modifier = Modifier
                 .fillMaxHeight()
+                .fillMaxWidth(0.4f)
                 .padding(16.dp),
             url = pokemon.imageUrl
         ) {

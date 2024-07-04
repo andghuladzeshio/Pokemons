@@ -13,11 +13,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PokemonListViewModel @Inject constructor(
-    private val getPokemonsUseCase: GetPokemonsUseCase
+    private val getPokemonsUseCase: GetPokemonsUseCase,
+    private val paginationHelper: PaginationHelper<Pokemon>
 ) : BaseViewModel() {
-    @Inject
-    lateinit var paginationHelper: PaginationHelper<Pokemon>
-
     private val _pokemonsFlow = MutableStateFlow<List<Pokemon>>(emptyList())
     val pokemonsFlow = _pokemonsFlow.asStateFlow()
 
